@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { useMemo } from "react";
 type RequestType={name:string};
 type ResponseType=Id<"workspaces">|null;
-
+//mutation are used to change the data or create the data
 type Options={
     onSucess?:(data:ResponseType)=>void;
     onError?:(error:Error)=>void;

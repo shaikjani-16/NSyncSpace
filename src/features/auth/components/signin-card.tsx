@@ -20,6 +20,8 @@ export const SignInCard=({setState}:SignInCardProps)=>{
     const [password,setPassword]=useState("");
     const [pending,setPending]=useState(false);
     const [error,setError]=useState("");
+    //used to create or signIn via different providers configured in convex auth ts file
+    //signIn and signOut are default provided by convex
     const handleClick=(value:'github'|'google')=>{
         setPending(true)
             signIn(value).catch((e)=>{
@@ -31,6 +33,7 @@ export const SignInCard=({setState}:SignInCardProps)=>{
     const handlePassword=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         setPending(true)
+        //flow is used to tell the convex to create the new user
         signIn("password",{email,password,flow:"signIn"})
         .catch((e)=>{
             console.log(e.format());
